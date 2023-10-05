@@ -52,7 +52,7 @@ int is_valid(Node* n){
   for(int fil=0; fil<9; fil++) {
     for(int col=0; col<9; col++) {
       num=n->sudo[fil][col];
-      if(num<=1 || num>=9){
+      if(num<1 || num>9){
         return 0; 
       }
       
