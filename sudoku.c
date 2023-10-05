@@ -102,7 +102,7 @@ List* get_adj_nodes(Node* n){
 int is_final(Node* n){
   for(int fila=0; fila<9; fila++){
     for(int col=0; col<9; col++){
-      if(n->sudo[fila][col] != 0){
+      if(n->sudo[fila][col] == 0){
         return 0;
       }
     }
