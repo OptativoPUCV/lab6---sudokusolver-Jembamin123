@@ -66,7 +66,7 @@ int is_valid(Node* n){
 
         int subMaFILL=fila/3;
         int subMaCOL =col/3;
-        if (auxSubMa[subMaFILL][subMaCOL][num]!=1){
+        if (auxSubMa[subMaFILL][subMaCOL][num]==1){
           return 0;
         }
       auxSubMa[subMaFILL][subMaCOL][num]=1;
