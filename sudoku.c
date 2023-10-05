@@ -83,11 +83,11 @@ int is_final(Node* n){
 }
 
 Node* DFS(Node* initial, int* cont){
-
+  (*cont)++;
   if(is_final(initial)){
     return initial;
   }
-  (*cont)++;
+  
   List* adyacentes=get_adj_nodes(initial);
   Node* resultado=NULL;
 
