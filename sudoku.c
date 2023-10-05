@@ -61,7 +61,7 @@ List* get_adj_nodes(Node* n){
               adNodo->sudo[i][j]=n->sudo[i][j];
             }
           }
-          adNodo->sudo[fil][col]=n;
+          adNodo->sudo[fil][col]=num;
           pushBack(list,adNodo);
         }
       }
