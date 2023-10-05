@@ -2,3 +2,14 @@ Thu 05 Oct 2023 04:39:06 PM UTC:
  tests:  0|5
 total_score: 0/70
 37e166c
+Thu 05 Oct 2023 04:48:12 PM UTC: 
+ sudoku.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+In file included from test.c:5:
+sudoku.c: In function ‘get_adj_nodes’:
+sudoku.c:64:33: error: assignment to ‘int’ from ‘Node *’ makes integer from pointer without a cast [-Werror=int-conversion]
+   64 |           adNodo->sudo[fil][col]=n;
+      |                                 ^
+cc1: all warnings being treated as errors
+Compilation failed
+78d98b5
