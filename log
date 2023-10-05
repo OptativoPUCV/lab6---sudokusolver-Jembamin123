@@ -128,3 +128,23 @@ Thu 05 Oct 2023 08:05:39 PM UTC:
  tests:  2|4
 total_score: 15/70
 c14d60f
+Thu 05 Oct 2023 08:11:13 PM UTC: 
+ sudoku.c | 38 ++++++++++++++++----------------------
+ 1 file changed, 16 insertions(+), 22 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘get_adj_nodes’:
+sudoku.c:58:25: error: implicit declaration of function ‘push_back’; did you mean ‘pushBack’? [-Werror=implicit-function-declaration]
+   58 |                         push_back(adj_nodes, new_node);
+      |                         ^~~~~~~~~
+      |                         pushBack
+sudoku.c: In function ‘is_valid’:
+sudoku.c:72:1: error: control reaches end of non-void function [-Werror=return-type]
+   72 | }
+      | ^
+At top level:
+sudoku.c:47:7: error: ‘get_adj_nodes’ defined but not used [-Werror=unused-function]
+   47 | List* get_adj_nodes(Node* current_node) {
+      |       ^~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+cf9d02e
