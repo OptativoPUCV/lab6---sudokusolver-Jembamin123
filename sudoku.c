@@ -73,6 +73,7 @@ int is_valid(Node* n){
       auxSubMa[subMaFILL][subMaCOL][num]=1;
     }
   }
+  return;
 }
 
 
