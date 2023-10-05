@@ -83,15 +83,18 @@ int is_final(Node* n){
 }
 
 Node* DFS(Node* initial, int* cont){
+  if(initial==NULL){
+    return NULL;
+  }
   (*cont)++;
   if(is_final(initial)){
     return initial;
   }
   
-  List* adyacentes=get_adj_nodes(initial);
+  List* ad=get_adj_nodes(initial);
   Node* resultado=NULL;
 
-  for(Node* adyacente = first(adyacentes); adyacente != NULL; adyacente = next(adyacentes)){
+  for(Node* adyacente = first(ad); adyacente!=NULL; adyacente=next(ad)){
     if(is_valid(adyacente)){
       resultado = DFS(adyacente, cont);
       if(resultado != NULL){
