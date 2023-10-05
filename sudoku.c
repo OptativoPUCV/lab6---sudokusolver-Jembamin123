@@ -67,7 +67,6 @@ List* get_adj_nodes(Node* current_node) {
     }
 
     return adj_nodes;
-}
 
 }
 
