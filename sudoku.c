@@ -44,9 +44,9 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
-  int auxCol[9][9] = {0};       //  números en columnas
-  int auxFil[9][9] = {0};       //  números en filas
-  int auxSubMa[3][3][9] = {0};  //  números en submatrices
+  int auxCol[9][10] = {0};       //  números en columnas
+  int auxFil[9][10] = {0};       //  números en filas
+  int auxSubMa[3][3][10] = {0};  //  números en submatrices
   int num;
   
   for(int fil=0; fil<9; fil++) {
