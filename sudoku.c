@@ -83,10 +83,7 @@ int is_final(Node* n){
 }
 
 Node* DFS(Node* initial, int* cont){
-  if(initial==NULL){
-    return NULL;
-  }
-  (*cont)++;
+
   if(is_final(initial)){
     return initial;
   }
@@ -101,6 +98,9 @@ Node* DFS(Node* initial, int* cont){
         break;  
       }
     }
+  }
+  if(initial==NULL){
+    return NULL;
   }
   return resultado;
 }
