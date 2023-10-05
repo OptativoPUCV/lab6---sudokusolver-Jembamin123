@@ -52,7 +52,7 @@ int is_valid(Node* n){
     for(int col= 0; col<9; col++) {
       int num=n->sudo[fila][col];
         if(num< 1 || num>9){
-          return 0; // No es válido
+          return 0; 
         }
         if(auxFil[fila][num] == 1){
           return 0; 
@@ -66,7 +66,7 @@ int is_valid(Node* n){
 
         int subMaFILL =fila/3;
         int subMaCOL =col/3;
-        if (auxSubMa[subMaFILL][col][num]==1){
+        if (auxSubMa[subMaFILL][subMaCOL][num]==1){
           return 0;
         }
       auxSubMa[subMaFILL][subMaCOL][num]=1;
