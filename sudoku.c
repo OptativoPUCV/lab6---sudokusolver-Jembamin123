@@ -55,7 +55,7 @@ List* get_adj_nodes(Node* current_node) {
                     new_node->sudo[fila][col] = num;
 
                     if (is_valid(new_node)) {
-                        push_back(adj_nodes, new_node);
+                        pushBack(adj_nodes, new_node);
                     } else {
                         free(new_node);  // Liberar memoria de nodos no válidos
                     }
