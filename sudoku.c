@@ -90,18 +90,13 @@ List* get_adj_nodes(Node* n){
     for(int col=0; col<9; col++){
       if(n->sudo[fil][col] == 0){
         for(int num=1; num<=9; num++){
-          Node* adNodo = createNode();
-          for(int i=0; i<9; i++){
-            for(int j=0; j<9; j++){
-              adNodo->sudo[i][j] = n->sudo[i][j];
-            }
-          }
-          adNodo->sudo[fil][col] = num;
-
-          if(is_valid(adNodo)){
-            pushBack(list, adNodo);
-          } else {
-            free(adNodo);
+          Node* adj_node = copy(n);
+          adj_node->sudo[fil][col] = num;
+          if (is_valid(adj_node)) {
+            pushBack(list, adj_node);
+          } 
+          else{
+            free(adj_node);
           }
         }
         break;
@@ -110,6 +105,7 @@ List* get_adj_nodes(Node* n){
   }
   return list;
 }
+
 
 
 
