@@ -136,7 +136,7 @@ Node* DFS(Node* initial, int* cont){
   if(initial==NULL){
     return NULL;
   }*/
-  return 1;
+  return 0;
 }
 
 /*
