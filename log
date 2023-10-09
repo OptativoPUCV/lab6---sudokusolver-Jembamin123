@@ -606,3 +606,78 @@ Mon 09 Oct 2023 02:49:44 AM UTC:
  tests:  6|2
 total_score: 45/70
 3d84a0e
+Mon 09 Oct 2023 02:52:00 AM UTC: 
+ sudoku.c | 45 ++++++++++++++++++++++-----------------------
+ 1 file changed, 22 insertions(+), 23 deletions(-)
+In file included from test.c:5:
+sudoku.c:46:1: error: unknown type name ‘iint’; did you mean ‘uint’?
+   46 | iint is_valid(Node* n, int fila, int col, int num) {
+      | ^~~~
+      | uint
+sudoku.c: In function ‘is_valid’:
+sudoku.c:49:9: error: ‘col’ redeclared as different kind of symbol
+   49 |     int col[10] = {0};
+      |         ^~~
+sudoku.c:46:38: note: previous definition of ‘col’ with type ‘int’
+   46 | iint is_valid(Node* n, int fila, int col, int num) {
+      |                                  ~~~~^~~
+sudoku.c:62:23: error: array subscript is not an integer
+   62 |         if (n->sudo[i][col] != 0) {
+      |                       ^
+sudoku.c:63:31: error: array subscript is not an integer
+   63 |             if (col[n->sudo[i][col]] == 1) {
+      |                               ^
+sudoku.c:66:27: error: array subscript is not an integer
+   66 |             col[n->sudo[i][col]] = 1;
+      |                           ^
+sudoku.c:71:31: error: invalid operands to binary / (have ‘int *’ and ‘int’)
+   71 |         int subcol = 3 * (col / 3) + i % 3;
+      |                           ~~~ ^
+      |                           |
+      |                           int *
+sudoku.c: In function ‘get_adj_nodes’:
+sudoku.c:94:14: error: too few arguments to function ‘is_valid’
+   94 |           if(is_valid(adj_node)){
+      |              ^~~~~~~~
+sudoku.c:46:6: note: declared here
+   46 | iint is_valid(Node* n, int fila, int col, int num) {
+      |      ^~~~~~~~
+test.c: In function ‘test_isvalid’:
+test.c:112:9: error: too few arguments to function ‘is_valid’
+  112 |     if(!is_valid(initial)){
+      |         ^~~~~~~~
+In file included from test.c:5:
+sudoku.c:46:6: note: declared here
+   46 | iint is_valid(Node* n, int fila, int col, int num) {
+      |      ^~~~~~~~
+test.c:120:8: error: too few arguments to function ‘is_valid’
+  120 |     if(is_valid(initial)){
+      |        ^~~~~~~~
+In file included from test.c:5:
+sudoku.c:46:6: note: declared here
+   46 | iint is_valid(Node* n, int fila, int col, int num) {
+      |      ^~~~~~~~
+test.c:131:8: error: too few arguments to function ‘is_valid’
+  131 |     if(is_valid(initial)){
+      |        ^~~~~~~~
+In file included from test.c:5:
+sudoku.c:46:6: note: declared here
+   46 | iint is_valid(Node* n, int fila, int col, int num) {
+      |      ^~~~~~~~
+test.c:141:8: error: too few arguments to function ‘is_valid’
+  141 |     if(is_valid(initial)){
+      |        ^~~~~~~~
+In file included from test.c:5:
+sudoku.c:46:6: note: declared here
+   46 | iint is_valid(Node* n, int fila, int col, int num) {
+      |      ^~~~~~~~
+test.c: In function ‘test_dfs’:
+test.c:213:9: error: too few arguments to function ‘is_valid’
+  213 |     if(!is_valid(final)){
+      |         ^~~~~~~~
+In file included from test.c:5:
+sudoku.c:46:6: note: declared here
+   46 | iint is_valid(Node* n, int fila, int col, int num) {
+      |      ^~~~~~~~
+Compilation failed
+80f8e6d
