@@ -48,15 +48,15 @@ int is_valid(Node* n){
     int fil[10] = {0};
     int col[10] = {0};
     for(int j=0; j<9; j++){
-      int num = n->sudo[i][j];
+      int num = n->sudo[j][i];
       if(num!=0){
         if(fil[num]==1){
           return 0;
         }
         fil[num]=1;
       }
-      num=n->sudo[i][j]; 
-      if(num != 0){
+      num=n->sudo[j][i]; 
+      if(num!=0){
         if(col[num]==1){
           return 0;
         }
