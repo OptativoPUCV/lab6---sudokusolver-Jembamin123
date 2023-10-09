@@ -44,49 +44,48 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
-  for(int i=0;i<9;i++){
-    int fil[10]={0};
-    for(int j=0;j<9;j++){
-      int num=n->sudo[i][j];
-      if(num!=0){
-        if(fil[num]==1){
-          return 0;
+  for(int fila = 0; fila < 9; fila++){
+    int fila_nums[10] = {0}; 
+    for(int col = 0; col < 9; col++){
+      int num = n->sudo[fila][col];
+      if(num != 0){
+        if(fila_nums[num] == 1){
+          return 0; 
         }
-        fil[num]=1;
+        fila_nums[num] = 1;
       }
     }
   }
 
-  for(int j=0;j<9;j++){
-    int col[10]={0};
-    for(int i=0;i<9;i++){
-      int num=n->sudo[i][j];
-      if(num!=0){
-        if(col[num==1]){
+  for(int col = 0; col < 9; col++){
+    int col_nums[10] = {0};
+    for(int fila = 0; fila < 9; fila++){
+      int num = n->sudo[fila][col];
+      if(num != 0){
+        if(col_nums[num] == 1){
           return 0;
         }
-        col[num]=1;
+        col_nums[num] = 1;
       }
     }
   }
 
-  for(int k=0;k<9;k++){
-    int mat[10]={0};
-    for(int i=k/33;i<k/33+3;i++){
-      for(int j=k%33;j<k%33+3;j++){
-        int num=n->sudo[i][j];
-        if(num!=0){
-          if(mat[num]==1){
+  for(int submatriz = 0; submatriz < 9; submatriz++){
+    int submatriz_nums[10] = {0};
+    for(int i = submatriz / 3 * 3; i < submatriz / 3 * 3 + 3; i++){
+      for(int j = submatriz % 3 * 3; j < submatriz % 3 * 3 + 3; j++){
+        int num = n->sudo[i][j];
+        if(num != 0){
+          if(submatriz_nums[num] == 1){
             return 0;
           }
-          mat[num]=1;
+          submatriz_nums[num] = 1;
         }
       }
     }
   }
-  return 1;
+  return 1; 
 }
-
 
 
 List* get_adj_nodes(Node* n){
