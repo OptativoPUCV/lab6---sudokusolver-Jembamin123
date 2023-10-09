@@ -884,3 +884,9 @@ sudoku.c:76:19: error: assignment to ‘int’ from ‘void *’ makes integer f
 cc1: all warnings being treated as errors
 Compilation failed
 a816b42
+Mon 09 Oct 2023 03:18:31 AM UTC: 
+ sudoku.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  6|2
+total_score: 45/70
+8e794d9
