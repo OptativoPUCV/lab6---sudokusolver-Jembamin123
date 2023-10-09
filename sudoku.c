@@ -135,7 +135,7 @@ Node* DFS(Node* initial, int* cont){
        push(stack, adj_node);
     }
 
-    clean(adj_nodes);
+    free(adj_nodes);
     free(current);
   }
   free(stack);
