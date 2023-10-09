@@ -43,10 +43,28 @@ void print_node(Node* n){
     printf("\n");
 }
 
-int is_valid(Node* n){
-
+int is_valid(Node* n){  
+  int filas[9][10]={{0}};
+  int columnas[9][10]={{0}};
+  int submatrices[3][3][10]={{{0}}};
+  
+  for(int fila = 0; fila < 9; fila++) {
+    for(int col = 0; col < 9; col++) {
+      int num = n->sudo[fila][col];
+      if(num < 1 || num > 9) {
+        return 0;
+      }
+      if(filas[fila][num]==1 || columnas[col][num]==1 || submatrices[fila/3][col/3][num]==1){
+        return 0;
+      }
+      filas[fila][num]=1;
+      columnas[col][num]=1;
+      submatrices[fila/3][col/3][num]=1;
+    }
+  }
   return 1;
 }
+
 
 
 List* get_adj_nodes(Node* n){
