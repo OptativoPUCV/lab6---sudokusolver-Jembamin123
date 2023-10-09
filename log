@@ -725,3 +725,17 @@ sudoku.c:90:23: note: within this loop
 cc1: all warnings being treated as errors
 Compilation failed
 db4b2c7
+Mon 09 Oct 2023 02:58:02 AM UTC: 
+ sudoku.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+In file included from test.c:5:
+test.c: In function ‘get_adj_nodes’:
+sudoku.c:91:22: error: iteration 9 invokes undefined behavior [-Werror=aggressive-loop-optimizations]
+   91 |       if(n->sudo[fil][col] == 0){
+      |          ~~~~~~~~~~~~^~~~~
+sudoku.c:90:23: note: within this loop
+   90 |     for(int col=0; col<=9; col++){
+      |                    ~~~^~~
+cc1: all warnings being treated as errors
+Compilation failed
+1b3497e
