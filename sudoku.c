@@ -43,41 +43,42 @@ void print_node(Node* n){
     printf("\n");
 }
 
-iint is_valid(Node* n, int fila, int col, int num) {
-    // Verifica si el número num en la fila, columna y submatriz es válido
+int is_valid(Node* n){
+  for(int i=0; i<9; i++){
     int fil[10] = {0};
     int col[10] = {0};
-    int submatriz[10] = {0};
-    
-    for (int i = 0; i < 9; i++) {
-        // Verifica la fila
-        if (n->sudo[fila][i] != 0) {
-            if (fil[n->sudo[fila][i]] == 1) {
-                return 0;
-            }
-            fil[n->sudo[fila][i]] = 1;
+    for(int j=0; j<9; j++){
+      int num = n->sudo[i][j];
+      if(num!=0){
+        if(fil[num]==1){
+          return 0;
         }
-        
-        // Verifica la columna
-        if (n->sudo[i][col] != 0) {
-            if (col[n->sudo[i][col]] == 1) {
-                return 0;
-            }
-            col[n->sudo[i][col]] = 1;
+        fil[num]=1;
+      }
+      num=n->sudo[i][j]; 
+      if(num!=0){
+        if(col[num]==1){
+          return 0;
         }
-        
-        // Verifica la submatriz
-        int subfila = 3 * (fila / 3) + i / 3;
-        int subcol = 3 * (col / 3) + i % 3;
-        if (n->sudo[subfila][subcol] != 0) {
-            if (submatriz[n->sudo[subfila][subcol]] == 1) {
-                return 0;
-            }
-            submatriz[n->sudo[subfila][subcol]] = 1;
-        }
+        col[num] = 1;
+      }
     }
-    
-    return 1;
+  }
+  for(int k=0; k<9; k++){
+    int eee[10]={0};
+    for(int i= k/3*3; i<k / 3*3+3; i++){
+      for(int j= k % 3*3; j < k%3*3+3; j++){
+        int num=n->sudo[i][j];
+        if(num!=0){
+          if(eee[num]==1){
+            return 0;
+          }
+          eee[num]=1;
+        }
+      }
+    }
+  }
+  return 1;
 }
 
 
