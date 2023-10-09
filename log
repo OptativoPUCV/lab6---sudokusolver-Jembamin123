@@ -351,3 +351,14 @@ sudoku.c:64:12: note: each undeclared identifier is reported only once for each 
 cc1: all warnings being treated as errors
 Compilation failed
 acaae58
+Mon 09 Oct 2023 02:14:47 AM UTC: 
+ sudoku.c | 1 +
+ 1 file changed, 1 insertion(+)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:49:9: error: unused variable ‘col’ [-Werror=unused-variable]
+   49 |     int col[10]={0};
+      |         ^~~
+cc1: all warnings being treated as errors
+Compilation failed
+c375bfd
