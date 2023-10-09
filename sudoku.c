@@ -43,43 +43,41 @@ void print_node(Node* n){
     printf("\n");
 }
 
-int is_valid(Node* n){
-  for(int i=0; i<9; i++){
-    int fil[10] = {0};
-    int col[10] = {0};
-    for(int j=0; j<9; j++){
-      int num = n->sudo[i][j];
-      if(num!=0){
-        if(fil[num]==1){
-          return 0;
+int is_valid(Node* n) {
+    int rows[9][10] = {0};
+    int cols[9][10] = {0};
+    int subgrids[3][3][10] = {0};
+
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9; j++) {
+            int num = n->sudo[i][j];
+            if (num != 0) {
+                // Verificar filas
+                if (rows[i][num] == 1) {
+                    return 0;
+                }
+                rows[i][num] = 1;
+
+                // Verificar columnas
+                if (cols[j][num] == 1) {
+                    return 0;
+                }
+                cols[j][num] = 1;
+
+                // Verificar subgrids
+                int subgrid_row = i / 3;
+                int subgrid_col = j / 3;
+                if (subgrids[subgrid_row][subgrid_col][num] == 1) {
+                    return 0;
+                }
+                subgrids[subgrid_row][subgrid_col][num] = 1;
+            }
         }
-        fil[num]=1;
-      }
-      num=n->sudo[i][j]; 
-      if(num!=0){
-        if(col[num]==1){
-          return 0;
-        }
-        col[num] = 1;
-      }
     }
-  }
-  for(int k=0; k<9; k++){
-    int eee[10]={0};
-    for(int i= k/3*3; i<k / 3*3+3; i++){
-      for(int j= k % 3*3; j < k%3*3+3; j++){
-        int num=n->sudo[i][j];
-        if(num!=0){
-          if(eee[num]==1){
-            return 0;
-          }
-          eee[num]=1;
-        }
-      }
-    }
-  }
-  return 1;
+
+    return 1;
 }
+
 
 
 
