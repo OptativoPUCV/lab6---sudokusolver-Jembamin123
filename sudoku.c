@@ -44,52 +44,43 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
-    // Verificar filas
-    for(int i=0; i<9; i++){
-        int filas[10] = {0}; // Inicializar arreglo de números usados
-        for(int j=0; j<9; j++){
-            int num = n->sudo[i][j];
-            if(num != 0){
-                if(filas[num] == 1){ // Número ya fue usado en la fila
-                    return 0; // Estado inválido
-                }
-                filas[num] = 1; // Marcar número como usado
-            }
-        }
-    }
-
-    // Verificar columnas
+  for(int i=0; i<9; i++){
+    int fil[10] = {0};
+    int col[10] = {0};
     for(int j=0; j<9; j++){
-        int col[10] = {0}; // Inicializar arreglo de números usados
-        for(int i=0; i<9; i++){
-            int num = n->sudo[i][j];
-            if(num != 0){
-                if(col[num] == 1){ // Número ya fue usado en la columna
-                    return 0; // Estado inválido
-                }
-                col[num] = 1; // Marcar número como usado
-            }
+      int num = n->sudo[i][j];
+      if(num!=0){
+        if(fil[num]==1){
+          return 0;
         }
-    }
-
-    // Verificar submatrices de 3x3
-    for(int k=0; k<9; k++){ // Recorrer todas las submatrices
-        int matriz[10] = {0}; // Inicializar arreglo de números usados
-        for(int i=k/33; i<k/33+3; i++){ // Recorrer filas de la submatriz
-            for(int j=k%33; j<k%33+3; j++){ // Recorrer columnas de la submatriz
-                int num = n->sudo[i][j];
-                if(num != 0){
-                    if(matriz[num] == 1){ // Número ya fue usado en la submatriz
-                        return 0; // Estado inválido
-                    }
-                    matriz[num] = 1; // Marcar número como usado
-                }
-            }
+        fil[num]=1;
+      }
+      num=n->sudo[i][j]; 
+      if(num!=0){
+        if(col[num]==1){
+          return 0;
         }
+        col[num] = 1;
+      }
     }
-
-    return 1; // Estado válido
+  }
+  for(int k=0; k<9; k++){
+    int eee[10]={0};
+    for(int i= k/3*3; i<k / 3*3+3; i++){
+      for(int j= k % 3*3; j < k%3*3+3; j++){
+        int num=n->sudo[i][j];
+        if(num!=0){
+          if(eee[num]==1){
+            return 0;
+          }
+          eee[num]=1;
+        }
+      }
+    }
+  }
+  return 1;
 }
+
 
 
 List* get_adj_nodes(Node* n){
