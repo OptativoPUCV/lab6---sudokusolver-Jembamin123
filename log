@@ -443,3 +443,17 @@ Mon 09 Oct 2023 02:25:29 AM UTC:
  tests:  6|2
 total_score: 45/70
 972363e
+Mon 09 Oct 2023 02:27:39 AM UTC: 
+ sudoku.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:5:
+sudoku.c: In function ‘get_adj_nodes’:
+sudoku.c:94:29: error: array subscript -1 is below array bounds of ‘int[9]’ [-Werror=array-bounds]
+   94 |           adj_node->sudo[-1][-1]=num;
+      |           ~~~~~~~~~~~~~~~~~~^~~~
+sudoku.c:7:8: note: while referencing ‘sudo’
+    7 |    int sudo[9][9];
+      |        ^~~~
+cc1: all warnings being treated as errors
+Compilation failed
+04be9e8
