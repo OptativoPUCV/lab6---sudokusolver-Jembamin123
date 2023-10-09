@@ -43,43 +43,37 @@ void print_node(Node* n){
     printf("\n");
 }
 
-int is_valid(Node* n) {
-  for (int i = 0; i < 9; i++) {
+int is_valid(Node* n){
+  for(int i=0; i<9; i++){
     int fil[10] = {0};
-    for (int j = 0; j < 9; j++) {
+    int col[10] = {0};
+    for(int j=0; j<9; j++){
       int num = n->sudo[i][j];
-      if (num != 0) {
-        if (fil[num] == 1) {
+      if(num!=0){
+        if(fil[num]==1){
           return 0;
         }
-        fil[num] = 1;
+        fil[num]=1;
       }
-    }
-  }
-
-  for (int j = 0; j < 9; j++) {
-    int col[10] = {0};
-    for (int i = 0; i < 9; i++) {
-      int num = n->sudo[i][j];
-      if (num != 0) {
-        if (col[num] == 1) {
+      num=n->sudo[i][j]; 
+      if(num!=0){
+        if(col[num]==1){
           return 0;
         }
         col[num] = 1;
       }
     }
   }
-
-  for (int k = 0; k < 9; k++) {
-    int mat[10] = {0};
-    for (int i = k / 3 * 3; i < k / 3 * 3 + 3; i++) {
-      for (int j = k % 3 * 3; j < k % 3 * 3 + 3; j++) {
-        int num = n->sudo[i][j];
-        if (num != 0) {
-          if (mat[num] == 1) {
+  for(int k=0; k<9; k++){
+    int eee[10]={0};
+    for(int i= k/3*3; i<k / 3*3+3; i++){
+      for(int j= k % 3*3; j < k%3*3+3; j++){
+        int num=n->sudo[i][j];
+        if(num!=0){
+          if(eee[num]==1){
             return 0;
           }
-          mat[num] = 1;
+          eee[num]=1;
         }
       }
     }
@@ -89,28 +83,26 @@ int is_valid(Node* n) {
 
 
 
+List* get_adj_nodes(Node* n) {
+    List* list = createList();
 
-List* get_adj_nodes(Node* n){
-  List* list = createList();
-  
-  for(int fil=0; fil<9; fil++){
-    for(int col=0; col<9; col++){
-      if(n->sudo[fil][col] == 0){
-        for(int num=1; num<=9; num++){
-          Node* adj_node=copy(n);
-          adj_node->sudo[fil][col]=num;
-          if(is_valid(adj_node)){
-            pushBack(list, adj_node);
-          } 
-          else{
-            free(adj_node);
-          }
+    for (int fil = 0; fil < 9; fil++) {
+        for (int col = 0; col < 9; col++) {
+            if (n->sudo[fil][col] == 0) {
+                for (int num = 1; num <= 9; num++) {
+                    if (is_valid(n)) {
+                        Node* adj_node = copy(n);
+                        adj_node->sudo[fil][col] = num;
+                        pushBack(list, adj_node);
+                    }
+                }
+                break;
+            }
         }
-      }
     }
-  }
-  return list;
+    return list;
 }
+
 
 
 
