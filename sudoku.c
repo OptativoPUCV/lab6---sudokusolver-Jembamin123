@@ -104,6 +104,12 @@ List* get_adj_nodes(Node* n) {
     }
   }
 
+  if (!emptyFound) {
+    // Si no se encontraron celdas vacías, el nodo actual es un nodo final
+    // válido, agrégalo a la lista.
+    pushBack(list, n);
+  }
+
   return list;
 }
 
