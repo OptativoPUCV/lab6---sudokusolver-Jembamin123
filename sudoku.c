@@ -96,13 +96,20 @@ List* get_adj_nodes(Node* n){
             }
           }
           adNodo->sudo[fil][col]=num;
-          pushBack(list,adNodo);
+          
+          if(is_valid(adNodo)){
+            pushBack(list, adNodo);
+          } 
+          else{
+            free(adNodo);
+          }
         }
       }
     }
   }
   return list;
 }
+
 
 
 int is_final(Node* n){
