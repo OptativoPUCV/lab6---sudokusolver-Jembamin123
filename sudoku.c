@@ -34,57 +34,56 @@ Node* read_file (char* file_name){
 }
 
 void print_node(Node* n){
-    int i,j;
+    int i;
+    int g;
     for(i=0;i<9;i++){
-       for(j=0;j<9;j++)
-          printf("%d ", n->sudo[i][j]);
+       for(g=0; g<9; g++)
+          printf("%d ", n->sudo[i][g]);
        printf("\n");
     }
     printf("\n");
 }
 
 int is_valid(Node* n){
-  for(int fila = 0; fila < 9; fila++){
-    int fila_nums[10] = {0}; 
-    for(int col = 0; col < 9; col++){
-      int num = n->sudo[fila][col];
-      if(num != 0){
-        if(fila_nums[num] == 1){
-          return 0; 
-        }
-        fila_nums[num] = 1;
-      }
-    }
-  }
-
-  for(int col = 0; col < 9; col++){
-    int col_nums[10] = {0};
-    for(int fila = 0; fila < 9; fila++){
-      int num = n->sudo[fila][col];
-      if(num != 0){
-        if(col_nums[num] == 1){
+  for(int i=0;i<9;i++){
+    int fil[10]={0};
+    for(int g=0;g<9;g++){
+      int num=n->sudo[i][g];
+      if(num!=0){
+        if(fil[num]==1){
           return 0;
         }
-        col_nums[num] = 1;
+        fil[num]=1;
       }
     }
   }
-
-  for(int submatriz = 0; submatriz < 9; submatriz++){
-    int submatriz_nums[10] = {0};
-    for(int i = submatriz / 3 * 3; i < submatriz / 3 * 3 + 3; i++){
-      for(int j = submatriz % 3 * 3; j < submatriz % 3 * 3 + 3; j++){
-        int num = n->sudo[i][j];
-        if(num != 0){
-          if(submatriz_nums[num] == 1){
+  for(int g=0; g<9; g++){
+    int col[10]={0};
+    for(int i=0;i<9;i++){
+      int num=n->sudo[i][g];
+      if(num!=0){
+        if(col[num==1]){
+          return 0;
+        }
+        col[num]=1;
+      }
+    }
+  }
+  for(int k=0; k<9; k++){
+    int mat[10]={0};
+    for(int i=k/33;i<k/33+3;i++){
+      for(int g=k%33;g<k%33+3;g++){
+        int num=n->sudo[i][g];
+        if(num!=0){
+          if(mat[num]==1){
             return 0;
           }
-          submatriz_nums[num] = 1;
+          mat[num]=1;
         }
       }
     }
   }
-  return 1; 
+  return 1;
 }
 
 
