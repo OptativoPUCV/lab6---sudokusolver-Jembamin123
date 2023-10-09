@@ -44,42 +44,52 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
-  for(int i = 0; i < 9; i++){
+  // Verificar filas y columnas
+  for(int i = 0; i < 9; i++) {
     int fil[10] = {0};
     int col[10] = {0};
-    for(int j = 0; j < 9; j++){
-      int num = n->sudo[i][j];
-      if(num != 0){
-        if(fil[num] == 1){
+    for(int j = 0; j < 9; j++) {
+      // Verificar filas
+      int num_fil = n->sudo[i][j];
+      if (num_fil != 0) {
+        if (fil[num_fil] == 1) {
           return 0;
         }
-        fil[num] = 1;
+        fil[num_fil] = 1;
       }
-      num = n->sudo[j][i]; 
-      if(num != 0){
-        if(col[num] == 1){
+
+      // Verificar columnas
+      int num_col = n->sudo[j][i];
+      if (num_col != 0) {
+        if (col[num_col] == 1) {
           return 0;
         }
-        col[num] = 1;
+        col[num_col] = 1;
       }
     }
   }
-  for(int k = 0; k < 9; k++){
-    int eee[10] = {0};
-    for(int i = k / 3 * 3; i < k / 3 * 3 + 3; i++){
-      for(int j = (k % 3) * 3; j < (k % 3) * 3 + 3; j++){
-        int num = n->sudo[i][j];
-        if(num != 0){
-          if(eee[num] == 1){
+
+  // Verificar subregiones de 3x3
+  for (int subregion = 0; subregion < 9; subregion++) {
+    int sub[10] = {0};
+    int row_start = (subregion / 3) * 3;
+    int col_start = (subregion % 3) * 3;
+    for (int i = row_start; i < row_start + 3; i++) {
+      for (int j = col_start; j < col_start + 3; j++) {
+        int num_sub = n->sudo[i][j];
+        if (num_sub != 0) {
+          if (sub[num_sub] == 1) {
             return 0;
           }
-          eee[num] = 1;
+          sub[num_sub] = 1;
         }
       }
     }
   }
+
   return 1;
 }
+
 
 
 
@@ -91,7 +101,7 @@ List* get_adj_nodes(Node* n){
       if(n->sudo[fil][col] == 0){
         for(int num=1; num<=9; num++){
           Node* adj_node = copy(n);
-          adj_node->sudo[fil][col] = num;
+          adj_node->sudo[fil][col]=num;
           if (is_valid(adj_node)) {
             pushBack(list, adj_node);
           } 
