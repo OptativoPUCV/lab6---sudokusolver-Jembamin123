@@ -83,29 +83,27 @@ int is_valid(Node* n){
 
 
 
-List* get_adj_nodes(Node* n) {
-    List* list = createList();
-
-    for (int fil = 0; fil < 9; fil++) {
-        for (int col = 0; col < 9; col++) {
-            if (n->sudo[fil][col] == 0) {
-                for (int num = 1; num <= 9; num++) {
-                    Node* adj_node = copy(n);
-                    adj_node->sudo[fil][col] = num;
-                    
-                    if (is_valid(adj_node)) {
-                        pushBack(list, adj_node);
-                    } else {
-                        free(adj_node);
-                    }
-                }
-            }
+List* get_adj_nodes(Node* n){
+  List* list = createList();
+  
+  for(int fil=0; fil<9; fil++){
+    for(int col=0; col<9; col++){
+      if(n->sudo[fil][col] == 0){
+        for(int num=1; num<=9; num++){
+          Node* adj_node=copy(n);
+          adj_node->sudo[fil][col]=num;
+          if(is_valid(adj_node)){
+            pushBack(list, adj_node);
+          } 
+          else{
+            free(adj_node);
+          }
         }
+      }
     }
-
-    return list;
+  }
+  return list;
 }
-
 
 
 
@@ -123,29 +121,33 @@ int is_final(Node* n){
 }
 
 
-Node* DFS(Node* initial, int* cont){
-/*
-  if(is_final(initial)){
-    return initial;
-  }
-  
-  List* ad=get_adj_nodes(initial);
-  Node* resultado=NULL;
+Node* DFS(Node* initial, int* cont){/*
+  Stack* stack = createStack();
+  push(stack, initial);
 
-  for(Node* adyacente = first(ad); adyacente!=NULL; adyacente=next(ad)){
-    if(is_valid(adyacente)){
-      resultado = DFS(adyacente, cont);
-      if(resultado != NULL){
-        break;  
-      }
+  while(!is_empty(stack)){
+    Node* current = top(stack);
+    pop(stack);
+    (*cont)++;
+
+    if(is_final(current)){
+      clean(stack);
+      return current;
     }
+
+    List* adj_nodes = get_adj_nodes(current);
+
+    for(Node* adj_node = first(adj_nodes); adj_node != NULL; adj_node = next(adj_nodes)){
+       push(stack, adj_node);
+    }
+
+    clean(adj_nodes);
+    free(current);
   }
-  if(initial==NULL){
-    return NULL;
-  }
-  */
-  return 0;
-}
+  clean(stack);
+  return NULL;
+}*/
+
 
 /*
 int main( int argc, char *argv[] ){
