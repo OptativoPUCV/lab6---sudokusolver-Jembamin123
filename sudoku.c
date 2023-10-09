@@ -43,23 +43,45 @@ void print_node(Node* n){
     printf("\n");
 }
 
-int is_valid(Node* n){  
-  int filas[9][10]={{0}};
-  int columnas[9][10]={{0}};
-  int submatrices[3][3][10]={{{0}}};
-  
-  for(int fila = 0; fila < 9; fila++) {
-    for(int col = 0; col < 9; col++) {
-      int num = n->sudo[fila][col];
-      if(num < 1 || num > 9) {
-        return 0;
+int is_valid(Node* n){
+  for(int i=0;i<9;i++){
+    int fil[10]={0};
+    for(int j=0;j<9;j++){
+      int num=n->sudo[i][j];
+      if(num!=0){
+        if(fil[num]==1){
+          return 0;
+        }
+        fil[num]=1;
       }
-      if(filas[fila][num]==1 || columnas[col][num]==1 || submatrices[fila/3][col/3][num]==1){
-        return 0;
+    }
+  }
+
+  for(int j=0;j<9;j++){
+    int col[10]={0};
+    for(int i=0;i<9;i++){
+      int num=n->sudo[i][j];
+      if(num!=0){
+        if(col[num==1]){
+          return 0;
+        }
+        col[num]=1;
       }
-      filas[fila][num]=1;
-      columnas[col][num]=1;
-      submatrices[fila/3][col/3][num]=1;
+    }
+  }
+
+  for(int k=0;k<9;k++){
+    int mat[10]={0};
+    for(int i=k/33;i<k/33+3;i++){
+      for(int j=k%33;j<k%33+3;j++){
+        int num=n->sudo[i][j];
+        if(num!=0){
+          if(mat[num]==1){
+            return 0;
+          }
+          mat[num]=1;
+        }
+      }
     }
   }
   return 1;
