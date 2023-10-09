@@ -115,9 +115,9 @@ int is_final(Node* n){
   }
   return 1;
 }
-/*
-Node* DFS(Node* initial, int* cont){
 
+Node* DFS(Node* initial, int* cont){
+/*
   if(is_final(initial)){
     return initial;
   }
@@ -135,10 +135,10 @@ Node* DFS(Node* initial, int* cont){
   }
   if(initial==NULL){
     return NULL;
-  }
+  }*/
   return resultado;
 }
-*/
+
 /*
 int main( int argc, char *argv[] ){
 

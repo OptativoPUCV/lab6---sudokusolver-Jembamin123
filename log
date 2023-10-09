@@ -381,3 +381,18 @@ test.c:230:11: error: assignment to ‘Node *’ from ‘int’ makes pointer fr
 cc1: all warnings being treated as errors
 Compilation failed
 01beec3
+Mon 09 Oct 2023 02:17:42 AM UTC: 
+ sudoku.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘DFS’:
+sudoku.c:139:10: error: ‘resultado’ undeclared (first use in this function)
+  139 |   return resultado;
+      |          ^~~~~~~~~
+sudoku.c:139:10: note: each undeclared identifier is reported only once for each function it appears in
+sudoku.c:140:1: error: control reaches end of non-void function [-Werror=return-type]
+  140 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+7025fdb
