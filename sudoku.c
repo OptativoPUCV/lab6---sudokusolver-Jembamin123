@@ -51,14 +51,14 @@ int is_valid(Node* n){
       int num = n->sudo[i][j];
       if(num!=0){
         if(fil[num]==1){
-          break;
+          return 0;
         }
         fil[num]=1;
       }
       num=n->sudo[i][j]; 
       if(num!=0){
         if(col[num]==1){
-          break;
+          return 0;
         }
         col[num]=1;
       }
