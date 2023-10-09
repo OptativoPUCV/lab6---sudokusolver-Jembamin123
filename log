@@ -838,3 +838,26 @@ Mon 09 Oct 2023 03:17:48 AM UTC:
  tests:  6|2
 total_score: 45/70
 de4feb4
+Mon 09 Oct 2023 03:17:55 AM UTC: 
+ sudoku.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:70:41: error: expected ‘)’ before ‘;’ token
+   70 |       for(int j= (k%3)*3; j < ((k%3)*3+3; j++){
+      |                               ~         ^
+      |                                         )
+sudoku.c:70:47: error: expected ‘;’ before ‘{’ token
+   70 |       for(int j= (k%3)*3; j < ((k%3)*3+3; j++){
+      |                                               ^
+      |                                               ;
+sudoku.c:79:5: error: expected expression before ‘}’ token
+   79 |     }
+      |     ^
+sudoku.c:79:5: error: expected expression before ‘}’ token
+sudoku.c:68:9: error: unused variable ‘eee’ [-Werror=unused-variable]
+   68 |     int eee[10]={0};
+      |         ^~~
+cc1: all warnings being treated as errors
+Compilation failed
+aae55bd
