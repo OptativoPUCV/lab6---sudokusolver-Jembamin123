@@ -91,7 +91,7 @@ List* get_adj_nodes(Node* n){
       if(n->sudo[fil][col] == 0){
         for(int num=1; num<=9; num++){
           Node* adj_node=copy(n);
-          adj_node->sudo[0][0]=num;
+          adj_node->sudo[1][1]=num;
           if(is_valid(adj_node)){
             pushBack(list, adj_node);
           } 
