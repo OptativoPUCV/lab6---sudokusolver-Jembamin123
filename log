@@ -362,3 +362,8 @@ sudoku.c:49:9: error: unused variable ‘col’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 c375bfd
+Mon 09 Oct 2023 02:15:44 AM UTC: 
+ sudoku.c | 13 ++++---------
+ 1 file changed, 4 insertions(+), 9 deletions(-)
+ tests:  0|0
+87be0b5
