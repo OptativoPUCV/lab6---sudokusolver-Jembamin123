@@ -120,32 +120,29 @@ int is_final(Node* n){
   return 1;
 }
 
-Node* DFS(Node* initial, int* cont) {
-  (*cont)++; 
-
-  if (is_final(initial)) {
-    return initial;  
+Node* DFS(Node* initial, int* cont){
+/*
+  if(is_final(initial)){
+    return initial;
   }
+  
+  List* ad=get_adj_nodes(initial);
+  Node* resultado=NULL;
 
-  List* ad = get_adj_nodes(initial);
-
-  Node* resultado = NULL;
-
-  for (Node* adyacente = first(ad); adyacente != NULL; adyacente = next(ad)) {
-    if (is_valid(adyacente)) {
+  for(Node* adyacente = first(ad); adyacente!=NULL; adyacente=next(ad)){
+    if(is_valid(adyacente)){
       resultado = DFS(adyacente, cont);
-      if (resultado != NULL) {
-        break;
+      if(resultado != NULL){
+        break;  
       }
     }
   }
-
-  clearList(ad);
-  free(ad);
-
-  return resultado;
+  if(initial==NULL){
+    return NULL;
+  }
+  return 0;
 }
-
+*/
 /*
 int main( int argc, char *argv[] ){
 
