@@ -83,36 +83,27 @@ int is_valid(Node* n){
 
 
 
-List* get_adj_nodes(Node* n) {
+List* get_adj_nodes(Node* n){
   List* list = createList();
-  int emptyFound = 0;
-
-  for (int fila = 0; fila < 9; fila++) {
-    for (int columna = 0; columna < 9; columna++) {
-      if (n->sudo[fila][columna] == 0) {
-        emptyFound = 1;
-        for (int num = 1; num <= 9; num++) {
-          Node* adj_node = copy(n);
-          adj_node->sudo[fila][columna] = num;
-          if (is_valid(adj_node)) {
+  
+  for(int fil=0; fil<9; fil++){
+    for(int col=0; col<9; col++){
+      if(n->sudo[fil][col] == 0){
+        for(int num=1; num<=9; num++){
+          Node* adj_node=copy(n);
+          adj_node->sudo[fil][col]=num;
+          if(is_valid(adj_node)){
             pushBack(list, adj_node);
-          } else {
+          } 
+          else{
             free(adj_node);
           }
         }
       }
     }
   }
-
-  if (!emptyFound) {
-    // Si no se encontraron celdas vacías, el nodo actual es un nodo final
-    // válido, agrégalo a la lista.
-    pushBack(list, n);
-  }
-
   return list;
 }
-
 
 
 
