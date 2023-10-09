@@ -144,9 +144,9 @@ Node* DFS(Node* initial, int* cont){/*
     clean(adj_nodes);
     free(current);
   }
-  clean(stack);
+  clean(stack);*/
   return NULL;
-}*/
+}
 
 
 /*
